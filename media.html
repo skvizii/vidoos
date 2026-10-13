@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f4f0">
+  <meta name="description" content="Фотографии и видео Волжско-Камского оконного завода: медиаархив производства и проектов.">
+  <title>Медиаархив — Волжско-Камский оконный завод</title>
+  <link rel="stylesheet" href="media.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="nav wrap">
+      <a class="brand" href="index.html" aria-label="На главную"><span class="brandmark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>ВОЛЖСКО-КАМСКИЙ<br>ОКОННЫЙ ЗАВОД</span></a>
+      <nav class="links" aria-label="Главная навигация">
+        <a href="products.html">Продукция</a><a href="production.html">Производство</a><a href="about.html">О заводе</a><a href="projects.html">Проекты</a><a href="media.html" aria-current="page">Медиа</a><a href="contacts.html">Контакты</a>
+      </nav>
+      <div class="nav-actions"><button class="menu-btn" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">☰</button><a class="btn nav-cta" href="contacts.html">Обсудить проект ↗</a></div>
+    </div>
+    <nav class="mobile-panel" id="mobilePanel" aria-label="Мобильная навигация">
+      <a href="index.html">Главная</a><a href="products.html">Продукция</a><a href="production.html">Производство</a><a href="about.html">О заводе</a><a href="projects.html">Проекты</a><a href="media.html" aria-current="page">Медиа</a><a href="contacts.html">Контакты</a>
+    </nav>
+  </header>
+  <main>
+    <section class="page-intro"><div class="wrap">
+      <div class="breadcrumbs"><a href="index.html">Главная</a><span aria-hidden="true">/</span> Медиа</div>
+      <div class="intro-grid"><div>
+        <p class="eyebrow"><span class="eyebrow-dot"></span> Фото и видео</p>
+        <h1>Завод <em>в кадре.</em></h1>
+        <p class="intro-copy">Производство, конструкции и детали проектов — собрали фотографии и видеоматериалы в одном месте.</p>
+      </div><div class="intro-stats" aria-label="Содержимое медиаархива">
+        <div class="stat"><strong>23</strong><span>видеоматериала</span></div><div class="stat"><strong>12</strong><span>изображений</span></div>
+      </div></div>
+    </div></section>
+    <section class="gallery-section wrap" aria-labelledby="gallery-heading">
+      <div class="gallery-heading-row"><div><p class="section-kicker">Медиаархив</p><h2 id="gallery-heading">Материалы завода</h2></div><p class="results-count" id="resultsCount" aria-live="polite">Загружаем материалы…</p></div>
+      <div class="toolbar">
+        <div class="filters" role="group" aria-label="Фильтр материалов">
+          <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">Все материалы <span>35</span></button>
+          <button class="filter-btn" type="button" data-filter="video" aria-pressed="false">Видео <span>23</span></button>
+          <button class="filter-btn" type="button" data-filter="photo" aria-pressed="false">Фото <span>12</span></button>
+        </div>
+        <label class="search-box"><span class="search-icon" aria-hidden="true">⌕</span><span class="sr-only">Поиск по медиаархиву</span><input id="searchInput" type="search" placeholder="Найти материал" autocomplete="off"><kbd>/</kbd></label>
+      </div>
+      <div id="gallery" class="gallery-grid" aria-live="polite"></div>
+      <div class="empty-state" id="emptyState" hidden><h3>Ничего не найдено</h3><p>Попробуйте изменить запрос или выбрать другой фильтр.</p><button class="btn" id="resetFilters" type="button">Сбросить фильтры</button></div>
+    </section>
+    <section class="closing-band"><div class="wrap closing-inner"><div><p class="section-kicker">Следующий шаг</p><h2>Есть идея для проекта?</h2><p>Расскажите о задаче — обсудим подходящее решение.</p></div><a class="btn" href="contacts.html">Связаться с заводом ↗</a></div></section>
+  </main>
+  <footer class="footer wrap">
+    <a class="brand footer-brand" href="index.html"><span class="brandmark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>ВОЛЖСКО-КАМСКИЙ<br>ОКОННЫЙ ЗАВОД</span></a>
+    <p>Оконные и алюминиевые конструкции для современных пространств.</p>
+    <nav aria-label="Навигация в подвале"><a href="production.html">Производство</a><a href="projects.html">Проекты</a><a href="media.html" aria-current="page">Медиа</a><a href="contacts.html">Контакты</a></nav>
+    <small>© Волжско-Камский оконный завод</small>
+  </footer>
+  <dialog class="lightbox" id="lightbox" aria-label="Просмотр фотографии"><button class="lightbox-close" id="closeLightbox" type="button" aria-label="Закрыть просмотр">×</button><img id="lightboxImage" alt=""><p id="lightboxCaption"></p></dialog>
+  <script>
+  (() => {
+    'use strict';
+    const asset = name => 'https://raw.githubusercontent.com/skvizii/vidoos/main/' + name.split('/').map(encodeURIComponent).join('/');
+    const videos = [
+      ['14240897239778.mp4','Видеоархив 01'],['20548188113634.mp4','Видеоархив 02'],['20548217211618.mp4','Видеоархив 03'],
+      ['20578300463842.mp4','Видеоархив 04'],['20578301446882.mp4','Видеоархив 05'],['20578302888674.mp4','Видеоархив 06'],
+      ['20591985101538.mp4','Видеоархив 07'],['20592007580386.mp4','Видеоархив 08'],['20734313040610.mp4','Видеоархив 09'],
+      ['20734328703714.mp4','Видеоархив 10'],['20734329293538.mp4','Видеоархив 11'],['20734335453922.mp4','Видеоархив 12'],
+      ['20734338730722.mp4','Видеоархив 13'],['20734339713762.mp4','Видеоархив 14'],['8235590486578.mp4','Видеоархив 15'],
+      ['compressed_20617879161570.mp4','Видеоархив 16'],['compressed_20641714735842.mp4','Видеоархив 17'],
+      ['compressed_20734290299618.mp4','Видеоархив 18'],['compressed_20734307470050.mp4','Видеоархив 19'],
+      ['compressed_20734348167906.mp4','Видеоархив 20'],['factory-vertical.mp4','Производство — вертикальное видео','factory-vertical-poster.jpg'],
+      ['factory.mp4','Производство — видеоматериал','factory-poster.jpg'],['promo.mp4','Видеопрезентация','promo-poster.jpg']
+    ].map(([file,title,poster])=>({type:'video',file,title,poster:poster||''}));
+    const photos = [
+      ['31ce77b0-67d6-4501-8e86-25fe92b2d319.jpeg','Фотография объекта 01'],
+      ['33c70b0c-5946-46aa-be0a-3462bad4292f.jpeg','Фотография объекта 02'],
+      ['e4663683-1612-4e99-b270-4d528c0c0385.jpeg','Фотография объекта 03'],
+      ['factory-poster.jpg','Обложка: производство'],['factory-vertical-poster.jpg','Обложка вертикального видео'],
+      ['fecedcd6-c465-42d5-9486-98bb2d1b0ab1.jpeg','Фотография объекта 04'],
+      ['gh-black-front.jpg','Тёмный профиль — фронтальный вид'],['gh-black-side.jpg','Тёмный профиль — вид сбоку'],
+      ['gh-orange.jpg','Конструкция с цветным профилем'],['gh-white-door.jpg','Конструкция с дверью'],
+      ['gh-white-roof.jpg','Конструкция с белым профилем'],['promo-poster.jpg','Обложка видеопрезентации']
+    ].map(([file,title])=>({type:'photo',file,title}));
+    const items=[...videos,...photos];
+    const gallery=document.getElementById('gallery'),searchInput=document.getElementById('searchInput');
+    const resultsCount=document.getElementById('resultsCount'),emptyState=document.getElementById('emptyState');
+    const filterButtons=[...document.querySelectorAll('[data-filter]')];let activeFilter='all';
+    const openLightbox=item=>{
+      const box=document.getElementById('lightbox'),img=document.getElementById('lightboxImage');
+      img.src=asset(item.file);img.alt=item.title;document.getElementById('lightboxCaption').textContent=item.title;
+      if(typeof box.showModal==='function')box.showModal();else box.setAttribute('open','');
+    };
+    const makeCard=(item,index)=>{
+      const card=document.createElement('article');card.className='media-card '+(item.type==='video'?'video-card':'photo-card');
+      card.dataset.type=item.type;card.dataset.search=(item.title+' '+item.file).toLocaleLowerCase('ru');
+      const visual=document.createElement('div');visual.className='media-visual '+(item.type==='video'?'video-visual':'photo-visual');
+      if(item.type==='video'){
+        const video=document.createElement('video');video.controls=true;video.preload='none';video.playsInline=true;video.setAttribute('aria-label',item.title);
+        if(item.poster)video.poster=asset(item.poster);const source=document.createElement('source');source.src=asset(item.file);source.type='video/mp4';video.append(source);visual.append(video);
+      }else{
+        const img=document.createElement('img');img.src=asset(item.file);img.alt=item.title;img.loading='lazy';img.decoding='async';img.tabIndex=0;
+        img.setAttribute('role','button');img.setAttribute('aria-label','Увеличить: '+item.title);img.addEventListener('click',()=>openLightbox(item));
+        img.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox(item)}});
+        visual.append(img);const zoom=document.createElement('span');zoom.className='zoom-mark';zoom.setAttribute('aria-hidden','true');zoom.textContent='↗';visual.append(zoom);
+      }
+      const body=document.createElement('div');body.className='media-card-body';const meta=document.createElement('div');meta.className='media-meta';
+      const kind=document.createElement('span');kind.className='type-pill '+item.type;kind.textContent=item.type==='video'?'Видео':'Фото';
+      const number=document.createElement('span');number.className='item-number';number.textContent=String(index+1).padStart(2,'0');meta.append(kind,number);
+      const title=document.createElement('h3');title.textContent=item.title;const filename=document.createElement('p');filename.className='filename';filename.textContent=item.file;filename.title=item.file;
+      body.append(meta,title,filename);card.append(visual,body);return card;
+    };
+    const cards=items.map(makeCard);cards.forEach(card=>gallery.append(card));
+    const updateGallery=()=>{
+      const q=searchInput.value.trim().toLocaleLowerCase('ru');let visible=0;
+      cards.forEach(card=>{const show=(activeFilter==='all'||card.dataset.type===activeFilter)&&(!q||card.dataset.search.includes(q));card.hidden=!show;if(show)visible++});
+      resultsCount.textContent=visible+' '+(visible===1?'материал':visible>=2&&visible<=4?'материала':'материалов');
+      emptyState.hidden=visible!==0;gallery.hidden=visible===0;
+    };
+    filterButtons.forEach(button=>button.addEventListener('click',()=>{
+      activeFilter=button.dataset.filter;filterButtons.forEach(b=>{const selected=b===button;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected))});updateGallery();
+    }));
+    searchInput.addEventListener('input',updateGallery);
+    document.getElementById('resetFilters').addEventListener('click',()=>{
+      searchInput.value='';activeFilter='all';filterButtons.forEach((b,i)=>{b.classList.toggle('active',i===0);b.setAttribute('aria-pressed',String(i===0))});updateGallery();
+    });
+    const lightbox=document.getElementById('lightbox');
+    document.getElementById('closeLightbox').addEventListener('click',()=>lightbox.close?lightbox.close():lightbox.removeAttribute('open'));
+    lightbox.addEventListener('click',event=>{if(event.target===lightbox)lightbox.close()});
+    const menuToggle=document.getElementById('menuToggle'),mobilePanel=document.getElementById('mobilePanel');
+    menuToggle.addEventListener('click',()=>{const open=menuToggle.getAttribute('aria-expanded')!=='true';menuToggle.setAttribute('aria-expanded',String(open));mobilePanel.classList.toggle('open',open)});
+    document.addEventListener('keydown',event=>{
+      if(event.key==='/'&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)){event.preventDefault();searchInput.focus()}
+      if(event.key==='Escape'&&mobilePanel.classList.contains('open')){mobilePanel.classList.remove('open');menuToggle.setAttribute('aria-expanded','false')}
+    });
+    updateGallery();
+  })();
+  </script>
+</body></html>
