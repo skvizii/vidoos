@@ -1,0 +1,19 @@
+/* Видео-блок */
+.video-grid{display:grid;grid-template-columns:1fr;gap:15px}
+.video-grid.has-vertical{grid-template-columns:minmax(0,1fr) 300px;align-items:start}
+.video-card{background:var(--surface);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.video-card video{display:block;width:100%;height:auto;background:#000}
+.video-card.vertical video{aspect-ratio:9/16;object-fit:contain}
+.video-card figcaption{padding:14px 18px;font-size:12px;color:var(--muted);line-height:1.6}
+.video-card{margin:0}
+@media(max-width:1000px){.video-grid.has-vertical{grid-template-columns:1fr}.video-card.vertical{max-width:340px}}
+
+/* Два горизонтальных ролика на главной */
+.video-grid.two{grid-template-columns:minmax(0,2fr) minmax(0,1fr);align-items:start}
+/* Страница «Производство»: два горизонтальных слева, вертикальный справа */
+.video-grid.has-vertical .video-card.vertical{grid-column:2;grid-row:1 / span 2}
+.video-grid.has-vertical .video-card.short{grid-column:1;grid-row:2}
+@media(max-width:1000px){
+  .video-grid.two{grid-template-columns:1fr}
+  .video-grid.has-vertical .video-card.vertical,.video-grid.has-vertical .video-card.short{grid-column:auto;grid-row:auto}
+}
